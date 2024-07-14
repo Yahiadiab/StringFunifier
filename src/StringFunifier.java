@@ -2,10 +2,10 @@ import java.util.Arrays;
 
 public class StringFunifier {
 
-    private String boringString;
-    private int[] startIndexes;
-    private int[] endIndexes;
-    private String[] operations;
+    public String boringString;
+    public int[] startIndexes;
+    public int[] endIndexes;
+    public String[] operations;
 
     public StringFunifier(String boringString, int[] startIndexes, int[] endIndexes, String[] operations) {
         this.boringString = boringString;
@@ -27,24 +27,6 @@ public class StringFunifier {
 
         return funnyString.toString();
     }
-
-    public String applyOperation(String substring, String operation) {
-        switch (operation) {
-            case "REVERSE":
-                return new StringBuilder(substring).reverse().toString();
-            case "LOWERCASE":
-                return substring.toLowerCase();
-            case "UPPERCASE":
-                return substring.toUpperCase();
-            case "COMPRESSION":
-                return compress(substring);
-            case "SORT":
-                return sort(substring); 
-            default:
-                throw new IllegalArgumentException("Invalid operation: " + operation);
-        }
-    }
-
     public String compress(String str) {
         StringBuilder compressed = new StringBuilder();
         int count = 1;
@@ -71,4 +53,25 @@ public class StringFunifier {
         Arrays.sort(chars);
         return new String(chars);
     }
+
+
+
+    public String applyOperation(String substring, String operation) {
+        switch (operation) {
+            case "REVERSE":
+                return new StringBuilder(substring).reverse().toString();
+            case "LOWERCASE":
+                return substring.toLowerCase();
+            case "UPPERCASE":
+                return substring.toUpperCase();
+            case "COMPRESSION":
+                return compress(substring);
+            case "SORT":
+                return sort(substring);
+            default:
+                throw new IllegalArgumentException("Invalid operation: " + operation);
+        }
+    }
+
+
 }
